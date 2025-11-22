@@ -22,18 +22,23 @@ async function stop() {
 }
 
 async function start() {
-  const tokensPath = path.join(__dirname, "..", "data", "tokens.txt");
-
-  if (!fs.existsSync(tokensPath)) {
-    console.log("Tokens file does not exist.".red);
-    return null;
+  let tokenz = [];
+  if (process.env.TOKENS) {
+    tokenz = process.env.TOKENS.split(',').map(t => t.trim()).filter(t => t !== "");
+    console.log(`✅ Loaded ${tokenz.length} tokens from environment variables`.green);
+  } else {
+    const tokensPath = path.join(__dirname, "..", "data", "tokens.txt");
+    if (fs.existsSync(tokensPath)) {
+      const data = fs.readFileSync(tokensPath, "utf-8");
+      tokenz = data
+        .split("\n")
+        .map((token) => token.trim())
+        .filter((token) => token.length > 0);
+    } else {
+      console.log("Tokens file does not exist and TOKENS env var is not set.".red);
+      return null;
+    }
   }
-
-  const data = fs.readFileSync(tokensPath, "utf-8");
-  const tokenz = data
-    .split("\n")
-    .map((token) => token.trim())
-    .filter((token) => token.length > 0);
 
   if (tokenz.length === 0) {
     console.log("No tokens found in tokens.txt.".yellow);
