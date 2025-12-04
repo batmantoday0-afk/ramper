@@ -781,6 +781,7 @@ class P2Solver {
         log('Using Scrappey to generate cookie...'.blue);
 
         // Define the payload for the Scrappey API
+        const SAFE_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
         const payload = {
           cmd: 'request.get',
           //
@@ -791,7 +792,7 @@ class P2Solver {
           //     ],
           //     noDriver: true,
           cloudflareBypass: true,
-
+          userAgent: SAFE_USER_AGENT, // Force valid Chrome User Agent
           // Command to execute
           url: 'https://verify.poketwo.net/captcha/1183988420893233244', // Target URL
           proxy: `http://${config.proxy.username}:${config.proxy.password}@${config.proxy.ip}:${config.proxy.port}`, // Proxy configuration
@@ -1191,9 +1192,11 @@ class P2Solver {
           );
 
           // Define the payload for the Scrappey API
+          const SAFE_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
           const payload = {
             cloudflareBypass: true,
             cmd: 'request.get', // Command to execute
+            userAgent: SAFE_USER_AGENT, // Force valid Chrome User Agent
             url: 'https://verify.poketwo.net/captcha/1183988420893233244', // Target URL
             proxy: `http://${config.proxy.username}:${config.proxy.password}@${config.proxy.ip}:${config.proxy.port}`, // Proxy configuration
             retries: 3, // Number of retries
