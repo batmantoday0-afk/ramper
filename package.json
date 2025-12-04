@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "2captcha": "^3.0.5-2",
+    "axios": "^1.9.0",
+    "canvas": "^3.2.0",
+    "colors": "^1.4.0",
+    "discord-webhook-node": "^1.1.8",
+    "discord.js": "^14.24.2",
+    "discord.js-selfbot-v13": "^3.7.0",
+    "https-proxy-agent": "^7.0.6",
+    "nocaptchaai.js": "^1.2.0",
+    "onnxruntime-web": "^1.23.2",
+    "pokehint": "^1.4.22",
+    "puppeteer-real-browser-legends": "^1.5.1",
+    "sharp": "^0.34.5"
+  }
+}
