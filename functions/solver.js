@@ -37,7 +37,7 @@ console.log('Available services for Cloudflare:', [
 */
 async function getRecaptchaToken(userId) {
   const websiteURL = `https://verify.poketwo.net/captcha/${userId}`;
-  const websiteKey = '6LfgtMoaAAAAAPB_6kwTMPj9HG_XxRLL7n92jYkD';
+  const websiteKey = '6LdAvUsbAAAAAJQqXye6rLyESPYiNMU7GPlgEqMi';
   const maxErrorRetries = 2; // Number of retries on error
   let errorAttempt = 0;
   let clientKey, createTaskUrl, getTaskResultUrl;
@@ -68,13 +68,12 @@ async function getRecaptchaToken(userId) {
       version: 'v2',
       pageURL: websiteURL,
       siteKey: websiteKey,
-      invisible: false,
+      invisible: true,
     };
 
     const payload = {
       actor: 'captcha.recaptcha',
       input: inputData,
-      proxy: {},
     };
 
     try {
