@@ -74,7 +74,9 @@ async function getRecaptchaToken(userId) {
     const payload = {
       actor: 'captcha.recaptcha',
       input: inputData,
-      proxy: {},
+      proxy: {
+        proxyURL: `http://${config.proxy.username}:${config.proxy.password}@${config.proxy.ip}:${config.proxy.port}`,
+      },
     };
 
     try {
